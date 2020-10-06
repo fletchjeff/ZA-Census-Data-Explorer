@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Population Explorer</title>
+		<script type="text/javascript" src="d3.v2.js"></script>
+
+		<link type="text/css" rel="stylesheet" href="choropleth.css"/>
+	</head>
+	<body>
+
+				<div class="loader" id="loader">
+					<div class="loading_text">
+						Loading Data<br>
+					</div>
+					<img src="images/ajax-loader.gif">
+					
+				</div>	
+		<div id="continer">
+			<div id="input_container">
+				<div id="year_container">
+					<div class="year_button" id="year_1996" onclick="year_clicker(this.id)">
+						1996
+					</div>
+					<div class="year_button" id="year_2001" onclick="year_clicker(this.id)">
+						2001
+					</div>	
+					<div class="year_button  year_button_on" id="year_2011" onclick="year_clicker(this.id)">
+						2011
+					</div>				
+				</div>
+				<div id="gender_container" class="selector">
+					<div class="num_header">
+						Gender
+					</div>
+					<div class="button button_on" id="Male" onclick="gender_clicker(this.id)">
+						Male
+					</div>
+					<div class="button button_on" id="Female" onclick="gender_clicker(this.id)">
+						Female
+					</div>
+					<div class="button button_on" id="gender_all" onclick="gender_clicker(this.id)">
+						All
+					</div>
+				</div>
+				<div id="racediv_container" class="selector">
+					<table  cellspacing="0" cellpadding="0">
+						<tr>
+							<td colspan="2">
+							<div class="num_header">
+								Race
+							</div></td>
+						</tr>
+						<tr>
+							<td>
+							<div class="button race_button button_on" id="Black_African" onclick="race_clicker(this.id)">
+								Black African
+							</div></td>
+							<td>
+							<div class="button race_button button_on" id="Indian_Asian" onclick="race_clicker(this.id)">
+								Indian / Asian
+							</div></td>
+						</tr>
+						<tr>
+							<td>
+							<div class="button race_button button_on" id="Coloured" onclick="race_clicker(this.id)">
+								Coloured
+							</div></td>
+							<td>
+							<div class="button race_button button_on" id="White" onclick="race_clicker(this.id)">
+								White
+							</div></td>
+						</tr>
+						<tr>
+							<td>
+							<div class="button button_on" id="race_all" onclick="race_clicker(this.id)">
+								All
+							</div></td>
+							<td>
+							<div class="button button_on" id="race_none" onclick="race_clicker(this.id)" style="float: right;">
+								None
+							</div></td>
+						</tr>
+					</table>
+
+				</div>
+				<div id="agediv_container" class="selector">
+					<table id="agediv_table" cellspacing="0" cellpadding="0">
+						<tr>
+							<td colspan=9>
+							<div class="num_header">
+								Age Group
+							</div></td>
+						</tr>
+						<tr>
+							<td>
+							<div class="button button_on" id="age_0" onclick="age_clicker(this.id)">
+								0 - 4
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_5" onclick="age_clicker(this.id)">
+								5 - 9
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_10" onclick="age_clicker(this.id)">
+								10 - 14
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_15" onclick="age_clicker(this.id)">
+								15 - 19
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_20" onclick="age_clicker(this.id)">
+								20 - 24
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_25" onclick="age_clicker(this.id)">
+								25 - 29
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_30" onclick="age_clicker(this.id)">
+								30 - 34
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_35" onclick="age_clicker(this.id)">
+								35 - 39
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_40" onclick="age_clicker(this.id)">
+								40 - 44
+							</div></td>
+						</tr>
+						<tr>
+							<td>
+							<div class="button button_on" id="age_45" onclick="age_clicker(this.id)">
+								45 - 49
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_50" onclick="age_clicker(this.id)">
+								50 - 54
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_55" onclick="age_clicker(this.id)">
+								55 - 59
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_60" onclick="age_clicker(this.id)">
+								60 - 64
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_65" onclick="age_clicker(this.id)">
+								65 - 69
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_70" onclick="age_clicker(this.id)">
+								70 - 74
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_75" onclick="age_clicker(this.id)">
+								75 - 79
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_80" onclick="age_clicker(this.id)">
+								80 - 84
+							</div></td>
+							<td>
+							<div class="button button_on" id="age_85" onclick="age_clicker(this.id)">
+								85 +
+							</div></td>
+						</tr>
+						<tr>
+							<td colspan=4>
+							<div class="button button_on" id="age_all" onclick="age_clicker(this.id)">
+								All
+							</div></td>
+							<td colspan=4></td>
+							<td>
+							<div class="button button_on" id="age_none" onclick="age_clicker(this.id)">
+								None
+							</div></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div id="main_graphs">
+				<div id="gender_graph">
+					<div id="gender_key">
+						<table>
+							<tr>
+								<td>
+									Male
+								</td>
+								<td>
+								<svg width="11" height="11"><rect x="0" y="0" height="10" width="10" stroke="#000000" stroke-width="1" shape-rendering="crispEdges" fill="#A6CEE3"></rect></svg>	
+								</td>
+							</tr>							
+							<tr>
+								<td>
+									Female
+								</td>
+								<td>
+								<svg width="11" height="11"><rect x="0" y="0" height="10" width="10" stroke="#000000" stroke-width="1" shape-rendering="crispEdges" fill="#33A02C"></rect></svg>	
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="race_graph">
+					<div id="race_key">
+						<table>
+							<tr>
+								<td>
+									Black African
+								</td>
+								<td>
+									<svg width="11" height="11"><rect x="0" y="0" height="10" width="10" stroke="#000000" stroke-width="1" shape-rendering="crispEdges" fill="#A6CEE3"></rect></svg>
+								</td>
+								<td>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indian / Asian
+								</td>
+								<td>
+									<svg width="11" height="11"><rect x="0" y="0" height="10" width="10" stroke="#000000" stroke-width="1" shape-rendering="crispEdges" fill="#1F78B4"></rect></svg>
+								</td>								
+							</tr>
+							<tr>
+								<td>
+									Coloured
+								</td>
+								<td>
+									<svg width="11" height="11"><rect x="0" y="0" height="10" width="10" stroke="#000000" stroke-width="1" shape-rendering="crispEdges" fill="#B2DF8A"></rect></svg>
+								</td>
+								<td>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;White
+								</td>
+								<td>
+<svg width="11" height="11"><rect x="0" y="0" height="10" width="10" stroke="#000000" stroke-width="1" shape-rendering="crispEdges" fill="#33A02C"></rect></svg>
+								</td>								
+							</tr>							
+						</table>
+					</div>
+				</div>	
+				<div id="age_graph"></div>
+			</div>
+			<div id="map_and_bars">
+				<div id="tooltip">
+					<table>
+						<tr>
+							<th class="tt_header">Province:</th>
+							<th id="tt_province" class="tt_header">sdf</th>
+						</tr>
+						<tr>
+							<td colspan="2" class="tt_spacer"></td>
+						</tr>
+						<tr>
+							<td>Total:</td>
+							<td id="tt_total" class="tt_number"></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="tt_spacer"></td>
+						</tr>
+						<tr>
+							<td>Male:</td>
+							<td id="tt_male" class="tt_number"></td>
+						</tr>
+						<tr>
+							<td>Female:</td>
+							<td id="tt_female" class="tt_number"></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="tt_spacer"></td>
+						</tr>
+						<tr>
+							<td>Black African:</td>
+							<td id="tt_black_african" class="tt_number"></td>
+						</tr>
+						<tr>
+							<td>White:</td>
+							<td id="tt_white" class="tt_number"></td>
+						</tr>
+						<tr>
+							<td>Indian / Asian:</td>
+							<td id="tt_indian_asian" class="tt_number"></td>
+						</tr>
+						<tr>
+							<td>Coloured:</td>
+							<td id="tt_coloured" class="tt_number"></td>
+						</tr>
+					</table>
+
+						<div id="mouseover_tip">Move your mouse over the different provinces to see the detail.</div>
+
+				</div>
+
+				<div id="chart">
+				<div id="key_container">
+					<table cellspacing="0">
+						<tr>
+							<td class="scale_top">0</td>
+							<td class="scale_top">2</td>
+							<td class="scale_top">4</td>
+							<td class="scale_top">6</td>
+							<td class="scale_top">8+ </td>
+							<td>million</td>
+						</tr>
+						<tr>
+							<td class="scale_block" style="background-color: #9ECAE1"></td>
+							<td class="scale_block" style="background-color: #6BAED6"></td>
+							<td class="scale_block" style="background-color: #4292C6"></td>
+							<td class="scale_block" style="background-color: #2171B5"></td>
+							<td class="scale_block" style="background-color: #084594"></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				</div>
+				<div id="all_provinces_bar_graph"></div>
+			</div>
+		</div>
+			<script type="text/javascript" src="census.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39951846-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	</body>
+</html>

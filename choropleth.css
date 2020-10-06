@@ -1,0 +1,273 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-size: 14px;
+	background-color: #EEEEEE;
+	text-align: center;
+}
+
+#loader {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	visibility: visible;
+	z-index: 10;
+	background-color: white;
+	width: 1050px;
+	height: 740px;
+	margin: auto;
+	margin-top: -450px;
+	margin-left: -550px;
+	opacity: 0.95;
+}
+
+.loading_text {
+	margin: 200px 20px 20px 20px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 18px;
+}
+
+#tooltip {
+	z-index: 10;
+	background-color: #333;
+	opacity: 0.9;
+	color: white;
+	text-align: left;
+	padding: 5px;
+	float: left;
+	margin-top: 0px;
+	height: 337px;
+}
+
+#mouseover_tip {
+	width: 247px;
+	padding-top: 45px;
+	text-align: center;
+	font-style: italic;
+}
+
+.tt_number {
+	text-align: right;
+}
+
+.tt_header {
+	text-align: center;
+}
+
+#tt_province {
+	width: 130px;
+}
+.tt_spacer {
+	height: 7px;
+}
+
+#continer {
+	margin: 0 auto;
+	width: 1024px;
+}
+
+.button {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	background-color: #F7FBFF;
+	border: 1px solid #084594;
+	padding: 5px;
+	color: #FFFFFF;
+	text-align: center;
+	margin: 2px 0px 0px 2px;
+	width: 50px;
+	cursor: pointer;
+	/*	text-decoration:none;
+	 text-shadow:1px 1px 1px #ffffff;	*/
+}
+
+.button_on {
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7abaff), color-stop(1, #378de5) );
+	background: -moz-linear-gradient( center top, #7abaff 5%, #378de5 100% );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7abaff', endColorstr='#378de5');
+	border: 1px solid #084594;
+	color: #FFFFFF;
+}
+
+.button_on:hover {
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #378de5) );
+	background: -moz-linear-gradient( center top, #7abaff 5%, #7abaff 100% );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#378de5');
+}
+
+.button_off {
+	/*background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #7abaff), color-stop(1, #ffffff) );
+	 background:-moz-linear-gradient( center top, #378de5 5%, #7abaff 100% );
+	 filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5, endColorstr='#7abaff');		*/
+	background: #CAE1F9;
+	color: #084594;
+}
+
+.year_button {
+	cursor: pointer;
+	float: left;
+	margin: 10px 20px 20px 20px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 18px;
+}
+
+.year_button_on {
+	font-weight: bold;
+}
+
+.year_button:hover {
+	text-decoration: underline;
+}
+
+.year_button_on:hover {
+	text-decoration: none;
+}
+
+.race_button {
+	width: 100px;
+}
+
+#input_container {
+	clear: both;
+	float: left;
+}
+
+#year_container {
+	margin-left: 350px;
+}
+
+#gender_container {
+	clear: both;
+	text-align: center;
+	padding: 10px 15px 15px 15px;
+	float: left;
+	background: #dddddd;
+	margin-right: 10px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#racediv_container {
+	text-align: center;
+	padding: 10px 15px 15px 15px;
+	float: left;
+	background: #dddddd;
+	margin-right: 10px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#agediv_container {
+	text-align: center;
+	padding: 10px 15px 15px 15px;
+	float: left;
+	background: #dddddd;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.num_header {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+#main_graphs {
+	float: left;
+	clear: both;
+}
+
+#map_and_bars {
+	background: #DDD;
+	float: left;
+	margin: 0 auto;
+	clear: both;
+	padding-top: 0px;
+}
+
+#chart {
+	float: left;
+	width: 350px;
+	/*	//padding-left: 120px;	*/
+}
+
+#all_provinces_bar_graph {
+	padding-top: 20px;
+	float: left;
+}
+
+#gender_graph {
+	float: left;
+	text-align: left;
+}
+
+#gender_key {
+	padding: 10px;
+}
+
+#race_graph {
+	width: 280px;
+	float: left;
+	text-align: left;
+}
+
+#race_key {
+	float: left;
+	text-align: left;
+	padding: 10px 10px 10px 20px;
+}
+
+#provinces path {
+	stroke: #fff;
+	stroke-width: 1px;
+}
+
+#age_graph {
+	float: left;
+}
+
+.axis {
+	font-size: 13px;
+	text-align: }
+
+	.axis path, .axis line {
+
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.area {
+	fill: lightsteelblue;
+}
+
+.line {
+	fill: steelblue;
+	stroke: steelblue;
+	stroke-width: 1.5px;
+}
+
+.dot {
+	fill: white;
+	stroke: steelblue;
+	stroke-width: 1.5px;
+}
+
+#key_container {
+	padding-left: 25px;
+}
+.scale_top {
+	width: 40px;
+	text-align: left;
+}
+
+.scale_block {
+	border-left: 1px solid;
+	height: 10px;
+}
